@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private float[] results;
     private TensorFlowClassifier classifier;
 
-    private String[] labels = {"Downstairs", "Jogging", "Sitting", "Standing", "Upstairs", "Walking"};
+    private final String[] labels = {"Downstairs", "Jogging", "Sitting", "Standing", "Upstairs", "Walking"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         y = new ArrayList<>();
         z = new ArrayList<>();
 
-        downstairsTextView = (TextView) findViewById(R.id.downstairs_prob);
-        joggingTextView = (TextView) findViewById(R.id.jogging_prob);
-        sittingTextView = (TextView) findViewById(R.id.sitting_prob);
-        standingTextView = (TextView) findViewById(R.id.standing_prob);
-        upstairsTextView = (TextView) findViewById(R.id.upstairs_prob);
-        walkingTextView = (TextView) findViewById(R.id.walking_prob);
+        downstairsTextView = findViewById(R.id.downstairs_prob);
+        joggingTextView = findViewById(R.id.jogging_prob);
+        sittingTextView = findViewById(R.id.sitting_prob);
+        standingTextView = findViewById(R.id.standing_prob);
+        upstairsTextView = findViewById(R.id.upstairs_prob);
+        walkingTextView = findViewById(R.id.walking_prob);
 
         classifier = new TensorFlowClassifier(getApplicationContext());
 
@@ -112,12 +112,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             results = classifier.predictProbabilities(toFloatArray(data));
 
-            downstairsTextView.setText(Float.toString(round(results[0], 2)));
-            joggingTextView.setText(Float.toString(round(results[1], 2)));
-            sittingTextView.setText(Float.toString(round(results[2], 2)));
-            standingTextView.setText(Float.toString(round(results[3], 2)));
-            upstairsTextView.setText(Float.toString(round(results[4], 2)));
-            walkingTextView.setText(Float.toString(round(results[5], 2)));
+            downstairsTextView.setText(Float.toString(round(results[0])));
+            joggingTextView.setText(Float.toString(round(results[1])));
+            sittingTextView.setText(Float.toString(round(results[2])));
+            standingTextView.setText(Float.toString(round(results[3])));
+            upstairsTextView.setText(Float.toString(round(results[4])));
+            walkingTextView.setText(Float.toString(round(results[5])));
 
             x.clear();
             y.clear();
@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return array;
     }
 
-    private static float round(float d, int decimalPlace) {
+    private static float round(float d) {
         BigDecimal bd = new BigDecimal(Float.toString(d));
-        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
     }
 

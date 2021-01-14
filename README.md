@@ -11,3 +11,34 @@ Interested in deeper understanding of Machine Learning algorithms? Implement the
 </a>
 
 <a href="https://leanpub.com/hmls" target="_blank">Read the book here</a>
+
+
+
+---
+
+### My Environments (2021)
+
+- Android SDK Platform 28 (Android 9.0 Pie)
+- Android SDK Build-Tools 30.0.3 (Higher version Supports lower version)
+- a Android *Phone* with Android 10 OS (Support lower SDK built apps I guess)
+
+
+
+**It works fine on my phone!**
+
+<img src="assets/image-20210114132032334.png" alt="image-20210114132032334" style="zoom:50%;" />
+
+### Changes Should be Made to Run Locally
+
+- `gradle-wrapper.properties`
+  - To fit your own `gradle` version. 
+  - BTW, my written version works fine, you can let it run.
+- `build.gradle`
+  - Top-level
+  - Change to your local **repositories**, I used `aliyun`
+- `build.gradle`
+  - App-level
+  - `compileSdkVersion`
+  - `buildToolsVersion`
+  - `targetSdkVersion`
+
