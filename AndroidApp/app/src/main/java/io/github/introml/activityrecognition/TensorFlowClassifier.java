@@ -10,9 +10,9 @@ public class TensorFlowClassifier {
         System.loadLibrary("tensorflow_inference");
     }
 
-    private TensorFlowInferenceInterface inferenceInterface;
+    private final TensorFlowInferenceInterface inferenceInterface;
     private static final String MODEL_FILE = "file:///android_asset/frozen_model.pb";
-//    private static final String MODEL_FILE = "file:///android_asset/frozen_har.pb";
+    //    private static final String MODEL_FILE = "file:///android_asset/frozen_har.pb";
     private static final String INPUT_NODE = "inputs";
     private static final String[] OUTPUT_NODES = {"y_"};
     private static final String OUTPUT_NODE = "y_";
